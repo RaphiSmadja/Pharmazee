@@ -1,0 +1,15 @@
+<hr>
+<div class="ui-g">
+  <div class="ui-sm-6 ui-md-6 ui-lg-6"></div>
+  <div class="ui-sm-1 ui-md-1 ui-lg-1"><h3>Stats</h3></div>
+</div>
+<div class="ui-g">
+  <div class="ui-sm-1 ui-md-1 ui-lg-1"></div>
+  <div class="ui-sm-1 ui-md-1 ui-lg-1"><h4>Jours:</h4></div>
+  <div class="ui-sm-1 ui-md-1 ui-lg-1">
+    <p-dropdown [options]="days" [(ngModel)]="selectedDays" (onChange)="changes()" editable="true" placeholder="Select a Brand"></p-dropdown>
+  </div>
+</div>
+<hr>
+<p-chart type="bar" [data]="data"></p-chart>
+<p-chart type="line" [data]="data"></p-chart>

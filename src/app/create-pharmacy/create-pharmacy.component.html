@@ -1,0 +1,155 @@
+<div class="ui-g">
+  <div class="ui-g-10" style="margin: auto">
+    <form [formGroup]="pharmacyForm" enctype="multipart/form-data" (ngSubmit)="onSubmit(pharmacyForm.value)">
+      <p-panel header="Validate">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Nom:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="name" name="name" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Nom de pharmacy est obligatoire et avoir au moins 3 caractères" *ngIf="!pharmacyForm.controls['name'].valid&&pharmacyForm.controls['name'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              email:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="email" name="email" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="email n'est pas valid" *ngIf="!pharmacyForm.controls['email'].valid&&pharmacyForm.controls['email'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Description:
+            </div>
+            <div class="ui-grid-col-6">
+              <textarea formControlName="description" name="description" pInputTextarea type="text"></textarea>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Description de pharmacy est obligatoire et avoir au moins 3 caractères" *ngIf="!pharmacyForm.controls['description'].valid&&pharmacyForm.controls['description'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              phone:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="phone" name="phone" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Téléphone est obligatoire et avoir 10 chiffres" *ngIf="!pharmacyForm.controls['phone'].valid&&pharmacyForm.controls['phone'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              city:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="city" name="city" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Ville est obligatoire et avoir au moins 2 caractères" *ngIf="!pharmacyForm.controls['city'].valid&&pharmacyForm.controls['city'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              adresse:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="adresse" name="adresse" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Adresse de pharmacy est obligatoire et avoir au moins 3 caractères" *ngIf="!pharmacyForm.controls['adresse'].valid&&pharmacyForm.controls['adresse'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              postalcode:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="postalcode" name="postalcode" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Code postal est obligatoire est avoir 5 chiffres" *ngIf="!pharmacyForm.controls['postalcode'].valid&&pharmacyForm.controls['postalcode'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              longitude:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="longitude" name="longitude" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="longitude est obligatoire" *ngIf="!pharmacyForm.controls['longitude'].valid&&pharmacyForm.controls['longitude'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              latitude:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="latitude" name="latitude" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="latitude est obligatoire" *ngIf="!pharmacyForm.controls['latitude'].valid&&pharmacyForm.controls['latitude'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Uploader 3 images *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input formControlName="file" name="file" type="file" (change)="onFileSelected($event)" multiple>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Image est obligatoire" *ngIf="!pharmacyForm.controls['file'].valid&&pharmacyForm.controls['file'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              User:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="user" name="user" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="utilisateur est obligatoire" *ngIf="!pharmacyForm.controls['user'].valid&&pharmacyForm.controls['user'].dirty"></p-message>
+            </div>
+          </div>
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-6">
+              <button pButton type="submit" label="Submit" [disabled]="!pharmacyForm.valid"></button>
+            </div>
+            <div class="ui-grid-col-4"></div>
+          </div>
+<!--          <div style="text-align:center;margin-top:20px" *ngIf="submitted">-->
+<!--            Form Submitted-->
+<!--            <br>-->
+<!--            {{diagnostic}}-->
+<!--          </div>-->
+        </div>
+      </p-panel>
+    </form>
+  </div>
+</div>

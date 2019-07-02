@@ -1,0 +1,54 @@
+<p-dataView #dv [value]="productList" [paginator]="true" [rows]="12" paginatorPosition="both" filterBy="brand"
+            [sortField]="sortField" [sortOrder]="sortOrder">
+  <p-header>
+    <h3>{{pharmacy.name}}</h3>
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </p-header>
+  <p-footer>
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </p-footer>
+
+  <ng-template let-product pTemplate="gridItem" let-i="rowIndex">
+    <div style="padding:.5em" class="ui-g-12 ui-md-3">
+      <p-panel [header]="product.name" [style]="{'text-align':'center'}">
+        <img style="max-width: 100%" src="{{product.picture1}}">
+        <div class="car-detail">{{product.description}}</div>
+        <div class="car-detail">{{product.price}}€</div>
+        <div class="car-detail"><span>Inventaire: </span>{{product.stock}}</div>
+        <hr class="ui-widget-content" style="border-top:0">
+        <button pButton type="button" icon="pi pi-search" (click)="details(product.id)" style="margin-right: 1em;"></button>
+        <button pButton type="button" icon="pi pi-shopping-cart" (click)="addbucket(i, product.id)" class="ui-button-success"></button>
+      </p-panel>
+    </div>
+  </ng-template>
+
+  <ng-template let-product pTemplate="listItem" let-i="rowIndex">
+    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+      <div class="ui-g-12 ui-md-3" style="text-align:center">
+        <img style="max-width: 100%" src="{{product.picture1}}">
+      </div>
+      <div class="ui-g-12 ui-md-8 order-details">
+        <div class="ui-g">
+          <div class="ui-g-2 ui-sm-6">Nom: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{product.name}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Description: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{product.description}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Prix: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{product.price}}€</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Inventaire: </div>
+          <div class="ui-g-10 ui-sm-6"><span>there is some left ! </span>{{product.stock}}</div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-1 search-icon">
+        <button pButton type="button" icon="pi pi-search" (click)="details(product.id)"></button>
+      </div>
+      <div class="ui-g-12 ui-md-1 search-icon">
+        <button pButton type="button" icon="pi pi-shopping-cart" (click)="addbucket(i, product.id)" class="ui-button-success"></button>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>
+

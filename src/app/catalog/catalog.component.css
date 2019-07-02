@@ -1,0 +1,27 @@
+.img_rounded{
+  border-radius: 100%;
+  width: 150px;
+  display: block;
+  margin: auto;
+  height: 150px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.produpanel {
+  text-align: center;
+  border: 1px dashed;
+  margin-bottom: 10px;
+}
+
+.ui-g {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.listProd {
+  padding: 10px;
+
+}

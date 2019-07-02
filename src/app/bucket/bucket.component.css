@@ -1,0 +1,11 @@
+.img_rounded{
+  border-radius: 100%;
+  border: 1px solid black;
+  width: 100px;
+  display: block;
+  margin: auto;
+  height: 100px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}

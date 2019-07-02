@@ -1,0 +1,75 @@
+<!-- Column -->
+<div class="p-grid text-center">
+  <p-panel header="Order details">
+
+<!--Debug Only ! -> -->
+    <p-panel header="Order id(Debug Only)">
+      {{order.id}}
+    </p-panel>
+    <hr>
+
+    <p-panel header="Total price">
+      {{order.totalprice}}€
+    </p-panel>
+    <hr>
+
+    <p-panel header="Order status">
+      {{order.status}}
+    </p-panel>
+    <hr>
+
+    <p-panel header="Loyalty gained">
+      {{order.nbloyalty}}
+    </p-panel>
+    <hr>
+
+    <p-panel header="Date">
+      {{order.updatedAt | date: 'medium'}}
+    </p-panel>
+    <hr>
+
+    <p-panel header="Pharmacy">
+      {{pharmacy.name}}
+    </p-panel>
+    <hr>
+
+    <p-panel header="User">
+      {{user.firstname}} {{user.lastname}} : {{user.email}}
+    </p-panel>
+    <hr>
+
+    <p-panel header="Products">
+      <p-virtualScroller [value]="order.products" scrollHeight="500px" [itemSize]="170" [rows]="100" [cache]="false">
+        <ng-template pTemplate="item" let-product let-i="index">
+          <div class="ui-g-12 ui-md-2">
+            <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i+1}}</div>
+          </div>
+          <div class="ui-g car-item">
+            <div class="ui-g-12 ui-md-2">
+              <img src="{{product?.picture1}}" style="max-width: 100%">
+            </div>
+            <div class="ui-g-12 ui-md-8">
+              <div class="ui-g">
+                <div class="ui-g-2 ui-sm-6">Name: </div>
+                <div class="ui-g-10 ui-sm-6">{{product?.name}}</div>
+
+                <div class="ui-g-2 ui-sm-6">Price </div>
+                <div class="ui-g-10 ui-sm-6">{{product?.price}}</div>
+
+                <div class="ui-g-2 ui-sm-6">Description: </div>
+                <div class="ui-g-10 ui-sm-6">{{product?.description}}</div>
+
+                <div class="ui-g-2 ui-sm-6">Quantity: </div>
+                <div class="ui-g-10 ui-sm-6">{{order.products[i].Listproductorder.quantity}}</div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-virtualScroller>
+    </p-panel>
+  </p-panel>
+</div>
+
+
+
+

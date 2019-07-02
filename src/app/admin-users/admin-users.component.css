@@ -1,0 +1,18 @@
+.hide-overflow{
+  /*word-break: break-all*/
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.limit-width{
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  min-width: 1px;
+}
+
+input{
+  width: 100%;
+}

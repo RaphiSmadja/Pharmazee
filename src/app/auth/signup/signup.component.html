@@ -1,0 +1,133 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Firstname:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="firstname" type="text" pInputText placeholder="firstname">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="Firstname is required and have at least 3 caracters" *ngIf="!registerForm.controls['firstname'].valid&&registerForm.controls['firstname'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Lastname:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="lastname" type="text" pInputText placeholder="lastname">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="lastname is required and have at least 3 caracters" *ngIf="!registerForm.controls['lastname'].valid&&registerForm.controls['lastname'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Gender:</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown [options]="genders" formControlName="gender"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="Gender is required" *ngIf="!registerForm.controls['gender'].valid&&registerForm.controls['gender'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Email:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="email" type="text" pInputText placeholder="email">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="email is invalid" *ngIf="!registerForm.controls['email'].valid&&registerForm.controls['email'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Pseudo:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="pseudo" type="text" pInputText placeholder="pseudo">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="pseudo is required and have at least 3 caracters" *ngIf="!registerForm.controls['pseudo'].valid&&registerForm.controls['pseudo'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Password:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="password" type="password" pInputText>
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="password is required and have at least 3 caracters" *ngIf="!registerForm.controls['password'].valid&&registerForm.controls['password'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Confirmation Password:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="passwordconfirmation" type="password" pInputText>
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="Confirmation de mot de passe doit être identique que mot de passe" *ngIf="!registerForm.controls['passwordconfirmation'].valid&&registerForm.controls['passwordconfirmation'].dirty||(registerForm.controls['passwordconfirmation'].value !== registerForm.controls['password'].value)"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Phone:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="phone" type="text" pInputText placeholder="phone">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="phone is required and needs 10 numbers" *ngIf="!registerForm.controls['phone'].valid&&registerForm.controls['phone'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">City:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="city" type="text" pInputText placeholder="city">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="city is required and have at least 2 caracters" *ngIf="!registerForm.controls['city'].valid&&registerForm.controls['city'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Adresse:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="adresse" type="text" pInputText placeholder="adresse">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="adresse is required and have at least 3 caracters" *ngIf="!registerForm.controls['adresse'].valid&&registerForm.controls['adresse'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">Postal Code:</div>
+      <div class="ui-grid-col-6">
+        <input class="form-control" formControlName="postalcode" type="text" pInputText placeholder="postal code">
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="postal code is required and have 5 numbers" *ngIf="!registerForm.controls['postalcode'].valid&&registerForm.controls['postalcode'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-6">
+        <input type="submit" class="btn btn-primary btn-block" value="Register" [disabled]="(!registerForm.valid) || (registerForm.controls['passwordconfirmation'].value !== registerForm.controls['password'].value)">
+      </div>
+      <div class="ui-grid-col-3"></div>
+    </div>
+  </div>
+</form>

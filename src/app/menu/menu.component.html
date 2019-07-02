@@ -1,0 +1,83 @@
+<p-toast position="top-right"></p-toast>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Pharmazee</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Pharmacies
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngFor="let pharma of pharmArray" class="dropdown-item" (click)="listNamePharmacy()"
+             [routerLink]="['/pharmacy', pharma.id]">{{ pharma.name }}</a>
+        </div>
+      <li class="nav-item">
+        <a class="nav-link">Contact<span class="sr-only">(current)</span></a>
+      </li>
+      <div *ngIf="isLogin() && isStatus() === 2" class="nav-item dropdown">
+        <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+          <h1 style="font-weight:normal">Left Sidebar</h1>
+          <a class="nav-link" routerLink="pharmacy/order">Voir toutes les commandes</a>
+          <a class="nav-link" routerLink="pharmacy/prescription">Voir toutes les ordonnances</a>
+          <a class="nav-link" routerLink="pharmacy/product">Créer un produit</a>
+          <a class="nav-link" routerLink="pharmacy/stat">Coup d'oeil sur les statistiques</a>
+          <a class="nav-link" routerLink="pharmacy/section">Créer votre article</a>
+        </p-sidebar>
+        <li class="nav-item" (click)="visibleSidebar1 = true">
+          <a class="nav-link">Ma Pharmacie<span class="sr-only">(current)</span></a>
+        </li>
+      </div>
+      <div *ngIf="isLogin() && isStatus() === 3" class="nav-item dropdown">
+        <p-sidebar [(visible)]="visibleSidebar2" [baseZIndex]="10000">
+          <h1 style="font-weight:normal">Left Sidebar</h1>
+          <a class="nav-link" routerLink="admin/users">Gestion des utilisateurs</a>
+          <a class="nav-link" routerLink="admin/pharmacies">Gestions des pharmacy</a>
+          <a class="nav-link" routerLink="admin/stat">Statistiques</a>
+        </p-sidebar>
+        <li class="nav-item" (click)="visibleSidebar2 = true">
+          <a class="nav-link">Administrateur<span class="sr-only">(current)</span></a>
+        </li>
+      </div>
+      <li *ngIf="!isLogin(); else elseBlock" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Mon interface
+        </a>
+        <div routerLinkActive="active" class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="auth/signin">Connexion</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="auth/signup">Vous êtes nouveau ?<br>Créez vous un compte</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <ng-template #elseBlock>
+        <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Mon Profil
+          </a>
+          <div routerLinkActive="active" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="user/detail">Modifier mon profil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="user/favorite-pharmacies">Mes pharmacies favorites</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="user/favorite-product">Mes produits favoris</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="user/order">Mes commandes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"><input type="submit" (click)="isLogout()" class="btn btn-danger"
+                                            value="Deconnexion"></a>
+          </div>
+      </ng-template>
+    </ul>
+    <button *ngIf="bucket.pharmacy !== undefined" type="button" class="btn btn-primary" routerLink="bucket">
+      My Bucket <span class="badge badge-light">{{bucket.cpt}}</span>
+    </button>
+  </div>
+</nav>

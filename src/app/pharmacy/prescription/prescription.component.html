@@ -1,0 +1,78 @@
+<p-table [columns]="cols" [value]="prescription" dataKey="id" editMode="row" [responsive]="true" [paginator]="true"
+         [rows]="10">
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+        {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+      <th>Client</th>
+      <th>Ordonnance</th>
+      <th style="width:8em"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+    <tr [pEditableRow]="rowData">
+      <td>
+        {{rowData.id}}
+      </td>
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.title" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.title}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <p-dropdown [options]="statusArr" [(ngModel)]="rowData.status" [style]="{'width':'100%'}"></p-dropdown>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.status}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        {{rowData.nbloyalty}}
+      </td>
+      <td>
+        {{rowData.createdAt}}
+      </td>
+      <td>
+        <tr>
+          <td>
+            Email : {{rowData.user.email}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Firstname : {{rowData.user.firstname}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Name : {{rowData.user.lastname}}
+          </td>
+        </tr>
+<!--    </td>-->
+    <td>
+      <button type="text" pButton icon="pi pi-search" (click)="op1.toggle($event)"></button>
+      <p-overlayPanel #op1>
+        <img src="{{rowData.picture_prescription}}" height="500" width="auto" alt="Galleria 1"/>
+      </p-overlayPanel>
+    </td>
+    <td style="text-align:center">
+      <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
+              (click)="onRowEditInit(rowData)"></button>
+      <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
+              style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+      <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
+              (click)="onRowEditCancel(rowData, ri)"></button>
+    </td>
+<!--    </tr>-->
+  </ng-template>
+</p-table>

@@ -1,0 +1,55 @@
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+
+<div class="ui-g">
+  <div class="ui-md-8 ui-lg-8">
+    <p-galleria [images]="images" panelWidth="700" panelHeight="690 " showCaption="true"></p-galleria>
+  </div>
+
+  <div class="ui-md-4 ui-lg-4">
+
+    <div class="ui-g">
+      <div class="ui-g-3 ui-sm-6"><h3>{{product.name}}</h3></div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-sm-6"><b>description: </b></div>
+      <div class="ui-g-8 ui-sm-6">{{product.description}}</div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-sm-6"><b>Prix: </b></div>
+      <div class="ui-g-8 ui-sm-6">{{product.price}}€</div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-sm-6"><b>Inventaire reste: </b></div>
+      <div class="ui-g-8 ui-sm-6">{{product.stock}}</div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-sm-6"><b>Nombre: </b></div>
+      <div class="ui-g-8 ui-sm-6">
+        <div class="input-group">
+          <input type="text" value="{{getQuantity()}}" class="form-control" placeholder="0" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="addProd()">+</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="reduceProd()">-</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-sm-6"><b>Favorite: </b></div>
+      <div class="ui-g-8 ui-sm-6"><p-inputSwitch [(ngModel)]="isFavorite" (click)="favorite()"></p-inputSwitch></div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-4 ui-sm-6"></div>
+      <div class="ui-g-8 ui-sm-6">
+        <p-button icon="pi pi-shopping-cart" iconPos="right" label="Ajouter au panier" (click)="addProds(product.id)"></p-button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.navbar {
+  background-color: #6BD99A !important;
+  color: #000000 !important;
+  width: 100%;
+}
+
+.navbar-light .navbar-brand {
+  opacity: 1.0;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+#navbarSupportedContent{
+  opacity: 1.0;
+  font-weight: 700;
+  font-size: 1.0em;
+}
+.nav-link{
+  padding: 0px 20px 0px 20px !important;
+}
+
+.form-inline{
+  margin-right: 20px !important;
+}

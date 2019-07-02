@@ -1,0 +1,18 @@
+#img_1{
+  background-size: 210px;
+  background-image: url('../../assets/img/adult-biology-chemical-356040.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#img_2{
+  background-size: 140px;
+  background-image: url('../../assets/img/adult-care-cure-433635.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#img_3{
+  background-size: 210px;
+  background-image: url('../../assets/img/care-clinic-cure-371941.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}

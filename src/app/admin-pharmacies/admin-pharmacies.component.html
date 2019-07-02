@@ -1,0 +1,196 @@
+<head><link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></head>
+<div class="ui-g">
+  <div class="ui-g-12 ui-md-11 ui-lg-11">
+    <h3>Pharmacies</h3>
+  </div>
+  <div class="ui-g-12 ui-md-1 ui-lg-1">
+    <button (click)="create()" pButton type="button" icon="pi pi-plus" iconPos="left" label="Click"></button>
+  </div>
+</div>
+
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<p-table [value]="pharmacies" dataKey="id" editMode="row" [paginator]="true" [rows]="10">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th class="hide-overflow">Description</th>
+      <th class="hide-overflow">Téléphone</th>
+      <th>Ville</th>
+      <th>Adresse</th>
+      <th>Code postale</th>
+      <th>Image 1</th>
+      <th>Image 2</th>
+      <th>Image 3</th>
+      <th>Nombre de clique</th>
+      <th class="hide-overflow">Longitude</th>
+      <th class="hide-overflow">Latitude</th>
+      <th>Date de création</th>
+      <th class="hide-overflow">Opérations</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-pharmacy let-editing="editing" let-ri="rowIndex">
+    <tr [pEditableRow]="pharmacy">
+      <td>
+        {{pharmacy.id}}
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.name">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.name}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.email" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.email}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.description">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.description}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.phone">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.phone}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.city">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.city}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.adresse">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.adresse}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.postalcode">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.postalcode}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.picture1">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.picture1}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.picture2">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.picture2}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.picture3">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.picture3}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.nbclickcall">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.nbclickcall}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.longitude">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.longitude}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td pEditableColumn class="hide-overflow">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="pharmacy.latitude">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{pharmacy.latitude}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td>
+        {{pharmacy.createdAt | date: 'medium'}}
+      </td>
+
+      <td style="text-align:center; padding: 0 0 0 0">
+        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(pharmacy)"></button>
+        <div style="width: 100%">
+          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .01em" (click)="onRowEditSave(pharmacy)"></button>
+          <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-warning" style="margin-right: .01em" (click)="onRowEditCancel(pharmacy, ri)"></button>
+          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-user-minus" class="ui-button-danger" (click)="onRowDeletePharmacy(pharmacy, ri)"></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

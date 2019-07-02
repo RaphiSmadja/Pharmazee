@@ -1,0 +1,151 @@
+<div class="row pattern">
+  <div class="container" style="margin: 20px auto" *ngFor="let item of sectionList; let i = index">
+    <div *ngIf="item.type_section === 'Advert'">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{item.name}}</span>
+          </div>
+        </p-header>
+        <div class="bg-img-advert" style="text-align: center">
+          <img src="{{item.picture_advertisement}}" width="300" height="auto">
+        </div>
+        {{item.description}}
+        <p-footer>
+          <button *ngIf="hasLiked(item) !== 1" pButton type="button" icon="pi pi-caret-up" class="ui-button-success" style="margin-right: 2em" (click)="like(item)" label="{{countLikes(item)}}" [disabled]="!isLogedIn"></button>
+          <button *ngIf="hasLiked(item) === 1" pButton type="button" icon="pi pi-caret-up" class="ui-button-success" style="margin-right: 2em" label="{{countLikes(item)}}" disabled></button>
+          <button *ngIf="hasLiked(item) !==2" pButton type="button" icon="pi pi-caret-down" class="ui-button-danger" style="margin-right: 2em" (click)="dislike(item)" label="{{countDislikes(item)}}" [disabled]="!isLogedIn"></button>
+          <button *ngIf="hasLiked(item) ===2" pButton type="button" icon="pi pi-caret-down" class="ui-button-danger" style="margin-right: 2em" label="{{countDislikes(item)}}" disabled></button>
+          <hr>
+          <p-accordion>
+            <p-accordionTab header="Commentaires">
+              <h5>Mon commentaire</h5>
+              <form>
+                <div class="ui-g">
+                  <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <textarea [(ngModel)]="content[i]" [ngModelOptions]="{standalone: true}" rows="5" cols="30" style="margin-right: 2em" pInputTextarea autoResize="autoResize" [disabled]="!isLogedIn">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="ui-g">
+                  <button *ngIf="hasComment(item)" (click)="comment(item, i)" pButton type="button" icon="pi pi-check" iconPos="right" label="Modifier" class="ui-button-rounded ui-button-warning" style="margin-right: 1em"></button>
+                  <button *ngIf="!hasComment(item)" (click)="comment(item, i)" pButton type="button" icon="pi pi-check" iconPos="right" label="Ajouter" class="ui-button-rounded ui-button-success" style="margin-right: 1em" [disabled]="!isLogedIn"></button>
+                  <button (click)="removeComment(item, i)" pButton type="button" icon="pi pi-trash" iconPos="right" label="Supprimer" class="ui-button-rounded ui-button-danger" [disabled]="hasComment(item) === false"></button>
+                </div>
+              </form>
+              <hr>
+
+              <p-virtualScroller [value]="item.comments" scrollHeight="500px" [itemSize]="150" [rows]="100" [cache]="false">
+                <p-header>
+                  Commentaires
+                </p-header>
+                <ng-template let-comment pTemplate="item" let-i="index">
+                  <div class="ui-g">
+                    <div class="ui-g-12 ui-md-1">
+                      <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i+1}}</div>
+                    </div>
+                    <div class="ui-g-12 ui-md-3">
+                      <div class="ui-g">
+                        <b>Utilisateur:</b>
+                      </div>
+                      <div class="ui-g">
+                        {{comment.user.pseudo}}
+                      </div>
+                      <div class="ui-g">
+                        <b>Date:</b>
+                      </div>
+                      <div class="ui-g">
+                        {{comment.createdAt | date: 'medium'}}
+                      </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-8">
+                      <div class="ui-g"><b>Contenu: </b></div>
+                      <div class="ui-g">
+                        {{comment.content}}
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </p-virtualScroller>
+            </p-accordionTab>
+          </p-accordion>
+        </p-footer>
+      </p-panel>
+    </div>
+
+    <div *ngIf="item.type_section === 'Story'">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{item.name}}</span>
+          </div>
+        </p-header>
+        <div class="bg-img-advert" style="text-align: center">
+          <img src="{{item.picture_story}}" width="300" height="auto">
+        </div>
+        {{item.description}}
+
+        <p-footer>
+          <button *ngIf="hasLiked(item) !== 1" pButton type="button" icon="pi pi-caret-up" class="ui-button-success" style="margin-right: 2em" (click)="like(item)" label="{{countLikes(item)}}" [disabled]="!isLogedIn"></button>
+          <button *ngIf="hasLiked(item) === 1" pButton type="button" icon="pi pi-caret-up" class="ui-button-success" style="margin-right: 2em" label="{{countLikes(item)}}" disabled></button>
+          <button *ngIf="hasLiked(item) !==2" pButton type="button" icon="pi pi-caret-down" class="ui-button-danger" style="margin-right: 2em" (click)="dislike(item)" label="{{countDislikes(item)}}" [disabled]="!isLogedIn"></button>
+          <button *ngIf="hasLiked(item) ===2" pButton type="button" icon="pi pi-caret-down" class="ui-button-danger" style="margin-right: 2em" label="{{countDislikes(item)}}" disabled></button>
+          <hr>
+          <p-accordion>
+            <p-accordionTab header="Commentaires">
+
+              <h5>Mon commentaire</h5>
+              <form>
+                <div class="ui-g">
+                  <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <textarea [(ngModel)]="content[i]" [ngModelOptions]="{standalone: true}" rows="5" cols="30" style="margin-right: 2em" pInputTextarea autoResize="autoResize">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="ui-g">
+                  <button *ngIf="hasComment(item)" (click)="comment(item, i)" pButton type="button" icon="pi pi-check" iconPos="right" label="Modifier" class="ui-button-rounded ui-button-warning" style="margin-right: 1em"></button>
+                  <button *ngIf="!hasComment(item)" (click)="comment(item, i)" pButton type="button" icon="pi pi-check" iconPos="right" label="Ajouter" class="ui-button-rounded ui-button-success" style="margin-right: 1em" [disabled]="!isLogedIn"></button>
+                  <button (click)="removeComment(item, i)" pButton type="button" icon="pi pi-trash" iconPos="right" label="Supprimer" class="ui-button-rounded ui-button-danger" [disabled]="hasComment(item) === false"></button>
+                </div>
+              </form>
+              <hr>
+
+              <p-virtualScroller [value]="item.comments" scrollHeight="500px" [itemSize]="150" [rows]="100" [cache]="false">
+                <p-header>
+                  Commentaires
+                </p-header>
+                <ng-template let-comment pTemplate="item" let-i="index">
+                  <div class="ui-g">
+                    <div class="ui-g-12 ui-md-1">
+                      <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i+1}}</div>
+                    </div>
+                    <div class="ui-g-12 ui-md-2" style="padding-top: 32px;">
+                      <div class="ui-g">
+                        <b>Utilisateur:</b>
+                      </div>
+                      <div class="ui-g">
+                        {{comment.user.pseudo}}
+                      </div>
+                      <div class="ui-g">
+                        <b>Date:</b>
+                      </div>
+                      <div class="ui-g">
+                        {{comment.createdAt | date: 'medium'}}
+                      </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-9">
+                      <div class="ui-g"><b>Contenu: </b></div>
+                      <div class="ui-g">
+                        {{comment.content}}
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </p-virtualScroller>
+            </p-accordionTab>
+          </p-accordion>
+        </p-footer>
+      </p-panel>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.w-100 {
+  width: 100%;
+  max-height: 500px !important;
+}
+
+.patternImg{
+  background-image: url("../../assets/img/cardiagramme.png");
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  bottom: 21px;
+  z-index: 1;
+}
+.col {
+  text-align: center;
+}
+#rate {
+  background-image:  url("../../assets/img/patternPharma.png");
+  height: 300px;
+  background-size: 180px;
+  width: 300px;
+  text-align: center;
+  color: #B4ECCC;
+  font-size: 15px;
+}
+#col2 {
+  max-width: 30px;
+}

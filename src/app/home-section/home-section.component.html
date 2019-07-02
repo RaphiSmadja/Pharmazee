@@ -1,0 +1,6 @@
+<div data-aos="fade-up" class="col-lg-4" *ngFor="let section of homeSections; let i = index">
+  <svg id={{section.id}} class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"></svg>
+  <h2>{{section.h2}}</h2>
+  <p>{{section.p}}</p>
+  <p><a class="btn btn-secondary" href={{section.href}} role="button">View details »</a></p>
+</div>

@@ -1,0 +1,49 @@
+ <div class="jumbotron">
+  <h4 class="card-title text-center mb-4 mt-1">Connection</h4>
+  <p class="text-success text-center">Connectez-vous avec email et mot de passe</p>
+  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-1"></div>
+        <div class="ui-grid-col-2">Email:</div>
+        <div class="ui-inputgroup ui-grid-col-6">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          <input class="form-control" formControlName="email" type="email" pInputText placeholder="Email" required [ngClass]="{'has-error': isSubmitted && formControls.email.errors}">
+        </div>
+        <div class="ui-grid-col-3">
+          <p-message severity="error" text="email invalide" *ngIf="!loginForm.controls['email'].valid&&loginForm.controls['email'].dirty"></p-message>
+        </div>
+      </div>
+
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-1"></div>
+        <div class="ui-grid-col-2">Mot de passe:</div>
+        <div class="ui-inputgroup ui-grid-col-6">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          <input pPassword class="form-control" formControlName="password" type="password" pInputText placeholder="Mot de Passe" required [ngClass]="{'has-error': isSubmitted && formControls.password.errors}">
+        </div>
+        <div class="ui-grid-col-3">
+          <p-message severity="error" text="password invalide" *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty"></p-message>
+        </div>
+      </div>
+
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-1"></div>
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-6">
+          <input type="submit" class="btn btn-primary btn-block" value="Login" [disabled]="!loginForm.valid">
+        </div>
+        <div class="ui-grid-col-3"></div>
+      </div>
+
+<!--      <div class="form-group">-->
+<!--        <input type="submit" class="btn btn-primary btn-block" value="Login">-->
+<!--      </div>-->
+      <p class="text-center"><a href="#" class="btn">Forgot password?</a></p>
+
+    </div>
+  </form>
+</div>
+<!--<p>-->
+<!--  Form Status: {{ loginForm.status }} - {{loginForm.value}}-->
+<!--</p>-->

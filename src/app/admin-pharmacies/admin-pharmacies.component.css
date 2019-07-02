@@ -1,0 +1,10 @@
+.hide-overflow{
+  /*word-break: break-all*/
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+input{
+  width: 100%;
+}

@@ -1,0 +1,42 @@
+.carousel-item {
+  max-height: 550px;
+}
+
+.marg-10{
+  margin: 10px;
+}
+
+
+agm-map {
+  height: 200px;
+}
+
+#patternRate {
+  background-image: url("../../assets/img/patternRATE.png");
+  background-repeat: repeat;
+  background-size: 150px;
+  height: 400px;
+}
+.row{
+  text-align: center;
+}
+.patternImg{
+  background-image: url("../../assets/img/cardiagramme.png");
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  bottom: 21px;
+  z-index: 1;
+}
+.parent {
+  display: flex;
+}
+.enfant {
+  margin: auto;
+}
+.align-t {
+  display: block;
+  margin: 10px 0px;
+  text-align: center;
+}

@@ -1,0 +1,51 @@
+<p-dataView #dv [value]="pharmacies" [paginator]="true" [rows]="12" filterBy="brand"
+            [sortField]="sortField" [sortOrder]="sortOrder">
+  <p-header>
+    <h3>Mes Pharmacies Préférés</h3>
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </p-header>
+  <p-footer>
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </p-footer>
+
+  <ng-template let-pharmacy pTemplate="gridItem">
+    <div style="padding:.5em" class="ui-g-12 ui-md-3">
+      <p-panel [header]="pharmacy.name" [style]="{'text-align':'center'}">
+        <img style="max-width: 100%" src="{{pharmacy.picture1}}">
+        <div class="car-detail">{{pharmacy.description}}</div>
+        <div class="car-detail">{{pharmacy.phone}}</div>
+        <div class="car-detail">{{pharmacy.adresse}}, {{pharmacy.city}} {{pharmacy.postalcode}}</div>
+        <hr class="ui-widget-content" style="border-top:0">
+        <button pButton type="button" icon="pi pi-search" (click)="details(pharmacy.id)" style="margin-top:0"></button>
+      </p-panel>
+    </div>
+  </ng-template>
+
+  <ng-template let-pharmacy pTemplate="listItem">
+    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+      <div class="ui-g-12 ui-md-3" style="text-align:center">
+        <img style="max-width: 100%" src="{{pharmacy.picture1}}">
+      </div>
+      <div class="ui-g-12 ui-md-8 order-details">
+        <div class="ui-g">
+          <div class="ui-g-2 ui-sm-6">Nom: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{pharmacy.name}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Description: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{pharmacy.description}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Contact: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{pharmacy.phone}}</b></div>
+
+          <div class="ui-g-2 ui-sm-6">Adresse: </div>
+          <div class="ui-g-10 ui-sm-6"><b>{{pharmacy.adresse}}, {{pharmacy.city}} {{pharmacy.postalcode}}</b></div>
+
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-1 search-icon">
+        <button pButton type="button" icon="pi pi-search" (click)="details(pharmacy.id)"></button>
+      </div>
+    </div>
+  </ng-template>
+
+</p-dataView>

@@ -1,0 +1,72 @@
+<div class="ui-g">
+  <div class="ui-g-10" style="margin: auto">
+    <form [formGroup]="sectionForm" enctype="multipart/form-data" (ngSubmit)="onSubmit(sectionForm.value)">
+      <p-panel header="Validate">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+          <div class="ui-grid-row">
+            <div class="ui-g-2">
+              Choisissez un type de article
+            </div>
+            <div class="ui-grid-col-6">
+              <p-radioButton name="groupname" value="Advert" label="Promotion" formControlName="type_section"></p-radioButton>
+              <p-radioButton name="groupname" value="Story" label="Article" formControlName="type_section"></p-radioButton>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Section type est obligatoire" *ngIf="!sectionForm.controls['type_section'].valid&&sectionForm.controls['type_section'].dirty"></p-message>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Title:
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" formControlName="name" name="name" placeholder="Required"/>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Titre de section est obligatoire et avoir plus de 3 caractères" *ngIf="!sectionForm.controls['name'].valid&&sectionForm.controls['name'].dirty"></p-message>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Uploader une image *:
+            </div>
+            <div class="ui-grid-col-6">
+              <input formControlName="file" name="file" type="file" (change)="onFileSelected($event)">
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Contenu:
+            </div>
+            <div class="ui-grid-col-6">
+              <textarea formControlName="description" name="description" pInputTextarea type="text"></textarea>
+            </div>
+            <div class="ui-grid-col-4">
+              <p-message severity="error" text="Contenu de la section est obligatoire et avoir plus que 3 caractères" *ngIf="!sectionForm.controls['description'].valid&&sectionForm.controls['description'].dirty"></p-message>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-6">
+              <button pButton type="submit" label="Submit" [disabled]="!sectionForm.valid"></button>
+            </div>
+            <div class="ui-grid-col-4"></div>
+          </div>
+          <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+            Form Submitted
+            <br>
+            {{diagnostic}}
+          </div>
+        </div>
+      </p-panel>
+    </form>
+  </div>
+</div>
+<!--<form [formGroup] = "uploadForm" (ngSubmit)="onSubmitTEST()">-->
+<!--  <div>-->
+<!--    <input type="file" name="fileSection" (change)="onFileSelect($event)" />-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <button type="submit">Upload</button>-->
+<!--  </div>-->
+<!--</form>-->

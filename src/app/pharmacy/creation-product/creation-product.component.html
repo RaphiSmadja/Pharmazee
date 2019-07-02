@@ -1,0 +1,83 @@
+<div class="ui-g height20"></div>
+<form [formGroup]="creationProductForm" (ngSubmit)="onSubmit()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">
+        <h5>Nom du produit: {{property}}</h5>
+      </div>
+      <div class="ui-grid-col-6">
+        <input type="text" pInputText [(ngModel)]="property" formControlName="name"/>
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="Nom de produit est obligatoire et avoir 3 caractères" *ngIf="!creationProductForm.controls['name'].valid&&creationProductForm.controls['name'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">
+        <h5>Prix</h5>
+      </div>
+      <div class="ui-grid-col-6">
+        <p-spinner [(ngModel)]="val" [min]="0" [max]="100" [step]="0.01" formControlName="price"></p-spinner>
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="prix(ex: 9.99) est obligatoire et doit être plus grand que 0" *ngIf="!creationProductForm.controls['price'].valid&&creationProductForm.controls['price'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+    <div class="ui-grid-col-1"></div>
+    <div class="ui-grid-col-2">
+      <h5>Description</h5>
+    </div>
+    <div class="ui-grid-col-6">
+      <textarea pInputTextarea [(ngModel)]="description" formControlName="description"></textarea>
+    </div>
+    <div class="ui-grid-col-3">
+      <p-message severity="error" text="Description est obligatoire et avoir 3 caractères" *ngIf="!creationProductForm.controls['description'].valid&&creationProductForm.controls['description'].dirty"></p-message>
+    </div>
+  </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">
+        <h5>Stock {{val1}}</h5>
+      </div>
+      <div class="ui-grid-col-6">
+        <p-slider [(ngModel)]="val1" [style]="{'width':'14em'}" formControlName="stock"></p-slider>
+      </div>
+      <div class="ui-grid-col-3">
+        <p-message severity="error" text="Inventaire est obligatoire et doit être plus grand que 0" *ngIf="!creationProductForm.controls['stock'].valid&&creationProductForm.controls['stock'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2">
+        <h5>Charger 1 à 3 photos du produit </h5>
+        <p-button type="button" label="Click" (onClick)="crawlP()" [disabled]="finding||property.length<3"></p-button>
+      </div>
+      <div class="ui-grid-col-6">
+        <div *ngIf="images.length > 0">
+          <div *ngFor="let img of images">
+            <p-checkbox name="groupname" [(ngModel)]="selectedValues" [ngModelOptions]="{standalone: true}" value="{{img.source}}"></p-checkbox>
+            <img src="{{img.source}}" width="auto" height="200">
+          </div>
+        </div>
+        <div *ngIf="images.length < 1 && finding"><i class="pi pi-spin pi-spinner" style="font-size: 3em"></i></div>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1"></div>
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-6">
+        <button pButton label="Valider" type="submit" class="ui-button-raised ui-button-success" [disabled]="!creationProductForm.valid || selectedValues.length!==3"></button>
+      </div>
+      <div class="ui-grid-col-3"></div>
+    </div>
+
+  </div>
+</form>

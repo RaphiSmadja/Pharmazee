@@ -1,0 +1,54 @@
+<br/>
+<div class="text-center"><h2>Your Bucket of pharmacy : {{bucket.pharmacy.name}}</h2></div>
+<br/>
+<hr/>
+
+<div *ngIf="bucket.pharmacy !== undefined">
+  <div *ngFor="let product of listProduct" class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-lg-2">
+      <div class="img_rounded" [style.backgroundImage]="'url('+ bucket.listProduct.get(product).picture1 +')'"></div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-2">
+      <div class="ui-g"><b>{{bucket.listProduct.get(product).name}}</b></div>
+      <div class="ui-g">{{bucket.listProduct.get(product).description}}</div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-2">
+      {{bucket.listProduct.get(product).price}}€
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-1">
+      <div class="input-group">
+        <input type="text" value="{{bucket.prodMap.get(product)}}" class="form-control" placeholder="0" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="addProd(product)">+</button>
+          <button class="btn btn-outline-secondary" type="button" (click)="reduceProd(product)">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-2">
+      <button pButton type="button" label="Delete" (click)="delete(product)"
+              class="ui-button-raised ui-button-danger"></button>
+      <!--          <input id="cardholder-name" type="text">-->
+      <!--          &lt;!&ndash; placeholder for Elements &ndash;&gt;-->
+      <!--          <div id="card-element"></div>-->
+      <!--          <button id="card-button" data-secret="{{ client_secret }}">-->
+      <!--            Submit Payment-->
+      <!--          </button>-->
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-lg-2"></div>
+    <div class="ui-g-12 ui-md-6 ui-lg-2"><b>Total Price :</b></div>
+    <div class="ui-g-12 ui-md-6 ui-lg-2">{{totalprice}}€</div>
+  </div>
+  <hr/>
+  <div class="text-center">
+    <p id="testPAY">{{sessionId}}</p>
+    <button pButton type="button" label="Valid your bucket" class="ui-button-raised ui-button-success" (click)="passOrder()" [disabled]="!(bucket.prodMap.size>0) || !(authService.isLoggedIn())"></button>
+  </div>
+  <br/>
+</div>
+
+<div *ngIf="bucket.pharmacy === undefined">
+  <h1>Your bucket is blank</h1>
+</div>
