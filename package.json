@@ -13,7 +13,7 @@
   "dependencies": {
     "@agm/core": "^1.0.0-beta.6",
     "@angular-devkit/architect": "0.800.2",
-    "@angular-devkit/build-angular": "^0.800.2",
+    "@angular-devkit/build-angular": "^15.0.4",
     "@angular-devkit/core": "8.0.2",
     "@angular-devkit/schematics": "8.0.2",
     "@angular/animations": "^8.0.0",
